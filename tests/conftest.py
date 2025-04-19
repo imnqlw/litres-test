@@ -1,18 +1,48 @@
-from selene import browser
+from selene import Browser, Config
 import pytest
 import os
 from selenium import webdriver
+from dotenv import load_dotenv
+import os
+from selenium.webdriver.chrome.options import Options
+from utils import attach
 
 
+@pytest.fixture(scope="session", autouse=True)
+def load_env():
+    load_dotenv()
+
+DEFAULT_BROWSER_VERSION = "100.0"
+
+selenoid_login = os.getenv('SELENOID_LOGIN')
+selenoid_pass = os.getenv('SELENOID_PASS')
+selenoid_url = os.getenv('SELENOID_URL')
 
 
+@pytest.fixture(scope='function')
+def setup_browser():
+    browser_version = DEFAULT_BROWSER_VERSION
+    options = Options()
+    selenoid_capabilities = {
+        "browserName": "chrome",
+        "browserVersion": browser_version,
+        "selenoid:options": {
+            "enableVNC": True,
+            "enableVideo": True
+        }
+    }
+    options.capabilities.update(selenoid_capabilities)
+    driver = webdriver.Remote(
+        command_executor=f"https://{selenoid_login}:{selenoid_pass}@{selenoid_url}/wd/hub",
+        options=options)
 
-@pytest.fixture(scope='function', autouse=True)
-def browser_manager():
-    browser.config.base_url = 'https://www.litres.ru/'
-    browser.config.windows_width =  1920
-    browser.config.windows_heights = 1080
+    browser = Browser(Config(driver))
 
     yield browser
-    browser.quit()
 
+    attach.add_screenshot(browser)
+    attach.add_logs(browser)
+    attach.add_html(browser)
+    attach.add_video(browser)
+
+    browser.quit()
