@@ -28,6 +28,7 @@ def test_catalog():
     main.check_catalog()
 
 
+
 @allure.title('Проверка книги')
 @allure.epic('Проверка книги')
 @allure.story('Проверка книги')
