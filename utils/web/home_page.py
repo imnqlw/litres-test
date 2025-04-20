@@ -5,26 +5,26 @@ from selene import browser, have
 class MainPage:
     @allure.step('Открытие страницы')
     def open(self):
-        browser.open('https://www.litres.ru/')
+        browser.open('')
 
     @allure.step('Выбор книги')
     def select_new_books(self):
-        browser.open('https://www.litres.ru/')
+        browser.open('/')
         browser.element("//a[@class='LowerMenuV2_lowerMenu__item__KBMA4'][contains(text(),'Новинки')]").click()
 
     @allure.step('Открытие каталога')
     def select_catalog(self):
-        browser.open('https://www.litres.ru/')
+        browser.open('/')
         browser.element('[data-testid="header-catalog-button"]').click()
 
     @allure.step('Поиск книги')
     def select_found_book(self):
-        browser.open('https://www.litres.ru/')
+        browser.open('/')
         browser.element('.SearchForm_input__qDTKP').click().type('Python').press_enter()
 
     @allure.step('Поиск с фильтрами')
     def search_with_filtres(self):
-        browser.open('https://www.litres.ru/')
+        browser.open('/')
         browser.element('.SearchForm_input__qDTKP').click().type('Python').press_enter()
         browser.element("//label[contains(text(),'Русский')]//*[name()='svg']").click()
 
