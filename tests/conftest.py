@@ -7,7 +7,6 @@ import os
 from selenium.webdriver.chrome.options import Options
 from utils import attach
 
-
 # @pytest.fixture(scope="session", autouse=True)
 # def load_env():
 #     load_dotenv()
