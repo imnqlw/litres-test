@@ -1,13 +1,13 @@
-
+import allure
 from selene import browser, have
 
 
 class MainPage:
 
     def open(self):
-        browser.get('https://www.litres.ru/')
+        browser.open('https://www.litres.ru/')
 
-
+    @allure.step("Открываем главную страницу")
     def select_new_books(self):
         browser.open('https://www.litres.ru/')
         browser.element("//a[@class='LowerMenuV2_lowerMenu__item__KBMA4'][contains(text(),'Новинки')]").click()
