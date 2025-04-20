@@ -17,6 +17,7 @@ jobs:
       - name: Install dependencies
         run: |
           pip install -r requirements.txt
+          pip install selenium
       - name: Install dependencies
         run: |
           pytest --alluredir=allure-results
