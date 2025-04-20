@@ -18,7 +18,6 @@ from utils import attach
 # selenoid_pass = os.getenv('SELENOID_PASS')
 
 
-
 @pytest.fixture(scope='function', autouse=True)
 def setup_browser():
     # browser_version = DEFAULT_BROWSER_VERSION
