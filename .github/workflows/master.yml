@@ -1,45 +1,40 @@
-name: Test
-
-on:
-  push:
-    branches:
-      - "master"
+name: Run tests and publish report
+on: [push]
 jobs:
   test:
-    name: Test
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - name: Set up Python 3.x
-        uses: actions/setup-python@v2
-        with:
-          python-version: '3.x'
-      - name: Install dependencies
-        run: |
-          pip install -r requirements.txt
-          pip install selenium
-      - name: Install dependencies
-        run: |
-          pytest --alluredir=allure-results
+      - uses: actions/checkout@v3
 
-      - name: Get Allure history
-        uses: actions/checkout@v2
+      - name: Set up JDK
+        uses: actions/setup-java@v3
+        with:
+          distribution: zulu
+          java-version: 17
+
+      - name: Run tests
+        run: ./gradlew clean test
+
+      - name: Load test report history
+        uses: actions/checkout@v3
         if: always()
         continue-on-error: true
         with:
           ref: gh-pages
           path: gh-pages
-      - name: Allure Report action from marketplace
-        uses: simple-elf/allure-report-action@master
+
+      - name: Build test report
+        uses: simple-elf/allure-report-action@v1.7
         if: always()
         with:
-          allure_results: allure-results
+          gh_pages: gh-pages
           allure_history: allure-history
-          keep_reports: 20
-      - name: Deploy report to Github Pages
+          allure_results: build/allure-results
+
+      - name: Publish test report
+        uses: peaceiris/actions-gh-pages@v3
         if: always()
-        uses: peaceiris/actions-gh-pages@v2
-        env:
-          PERSONAL_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          PUBLISH_BRANCH: gh-pages
-          PUBLISH_DIR: allure-history
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: gh-pages
+          publish_dir: allure-history
