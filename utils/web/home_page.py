@@ -10,27 +10,27 @@ class MainPage:
     @allure.step('Выбор книги')
     def select_new_books(self):
         browser.open('/')
-        browser.element("//a[@class='LowerMenuV2_lowerMenu__item__KBMA4'][contains(text(),'Новинки')]").click()
+        browser.element("//a[@class='LowerMenu-module__tITX-W__lowerMenu__item'][contains(text(),'Новинки')]").click()
 
     @allure.step('Открытие каталога')
     def select_catalog(self):
         browser.open('/')
-        browser.element('[data-testid="header-catalog-button"]').click()
+        browser.element("//button[contains(text(),'Каталог')]").click()
 
     @allure.step('Поиск книги')
     def select_found_book(self):
         browser.open('/')
-        browser.element('.SearchForm_input__qDTKP').click().type('Python').press_enter()
+        browser.element('[name="q"]').click().type('Python').press_enter()
 
     @allure.step('Поиск с фильтрами')
     def search_with_filtres(self):
         browser.open('/')
-        browser.element('.SearchForm_input__qDTKP').click().type('Python').press_enter()
-        browser.element("//label[contains(text(),'Русский')]//*[name()='svg']").click()
+        browser.element('[name="q"]').click().type('Python').press_enter()
+        browser.element("//label[contains(text(),'Текст')]").click()
 
     @allure.step('Проверка книги')
     def check_new_book(self):
-        browser.element("//span[@itemprop='name'][contains(text(),'Новинки')]").should(have.text('Новинки'))
+        browser.element("//span[@class='PageHeader-module__k0W69G__title__text']").should(have.text('Новинки'))
         return self
 
     @allure.step('Проверка каталога')
@@ -39,7 +39,7 @@ class MainPage:
 
     @allure.step('Проверка книги')
     def check_found_book(self):
-        browser.element('.SearchTitle_title__Crpui').should(have.text('Python'))
+        browser.element('[id="pageTitle"]').should(have.text('Python'))
 
     @allure.step('Проверка поиска книги')
     def check_search(self):
