@@ -3,3 +3,4 @@ allure-pytest
 selenium~=4.28.1
 python-dotenv
 pytest~=8.3.4
+poetry==2.1.3
