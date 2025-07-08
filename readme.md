@@ -2,7 +2,7 @@
 
 > <a target="_blank" href="https://www.litres.ru">Ссылка на сайт</a>
 
-![This is an image](design/image/litres_page.png)
+![This is an image](pic/litres.PNG)
 
 <h3> Список проверок, реализованных в автотестах:</h3>
 
@@ -19,7 +19,7 @@
 
 ----
 ### Проект реализован с использованием:
-<img src="design/icons/python-original.svg" width="50"> <img src="design/icons/pytest.png" width="50"> <img src="design/icons/intellij_pycharm.png" width="50"> <img src="design/icons/selene.png" width="50"> <img src="design/icons/selenoid.png" width="50"> <img src="design/icons/jenkins.png" width="50"> <img src="design/icons/allure_report.png" width="50"> <img src="design/icons/allure_testops.png" width="50"> <img src="design/icons/tg.png" width="50"> <img src="design/icons/jira.png" width="50">
+<img src="pic/python-original.svg" width="50"> <img src="pic/pytest.png" width="50"> <img src="pic/intellij_pycharm.png" width="50"> <img src="pic/selene.png" width="50"> <img src="pic/selenoid.png" width="50"> <img src="pic/jenkins.png" width="50"> <img src="pic/allure_report.png" width="50">
 
 ----
 ### Локальный запуск
@@ -27,8 +27,7 @@
 ```
 python -m venv .venv
 source .venv/bin/activate
-pip install poetry
-poetry install --no-root
+pip install -r requirements.txt
 pytest tests
 ```
 
@@ -54,7 +53,7 @@ pytest tests
 #### Пример отчета о прохождении ui-теста
 ![This is an image](pic/example_test_ui_allure.png)
 #### Пример отчета о прохождении api-теста
-![This is an image](design/image/test_api.png)
+![This is an image](pic/test_api.png)
 
 
 ## [Видео прохождения автотестов](https://jenkins.autotests.cloud/job/test_litres/38/allure/data/attachments/65715dbcedac12d8.html)
