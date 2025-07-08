@@ -3,7 +3,7 @@ from utils.api.api_helper import api_request
 class SearchPage:
 
     def test_certificate(self, base_url):
-        result = api_request(url=base_url, method='GET', endpoint='/auth/socials')
+        result = api_request(url=base_url, method='GET', endpoint='auth/socials')
         data = result.json()
         assert result.status_code == 200
         assert result.headers['Content-Type'] == 'application/json'

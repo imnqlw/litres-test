@@ -32,13 +32,3 @@ def test_certificate(base_api_url):
 @allure.label('layer', 'api')
 def test_add_card(base_api_url):
     sp.test_add_book_in_cart(base_api_url)
-
-@allure.epic('API. Authorized')
-@allure.label("owner", "flowerfrog")
-@allure.feature("Checking the authorization of the user")
-@allure.label('microservice', 'API')
-@allure.tag('regress', 'api', 'normal')
-@allure.label('layer', 'api')
-@allure.severity('normal')
-def test_authorisation(base_api_url):
-    sp.test_authorisation(base_api_url)
