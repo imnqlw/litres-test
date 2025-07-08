@@ -36,6 +36,6 @@ def test_search():
 @allure.tag('web')
 @allure.label('owner')
 @allure.severity('high')
-def test_aa():
-    mp.authorisation()
+def test_authorisation(login, passwd):
+    mp.authorisation(login, passwd)
     mp.check_authorisation()

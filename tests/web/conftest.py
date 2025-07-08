@@ -12,6 +12,19 @@ from utils import attach
 def load_env():
     load_dotenv()
 
+load_dotenv()
+mail = os.getenv("MAIL")
+password = os.getenv("MAIL_PASS")
+
+@pytest.fixture()
+def login():
+    login = mail
+    return login
+
+@pytest.fixture()
+def passwd():
+    passwd = password
+    return passwd
 
 @pytest.fixture(scope="function", autouse=True)
 def setup_browser():
