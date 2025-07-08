@@ -49,11 +49,11 @@ pytest tests
 #### Общие результаты
 ![This is an image](pic/allure.PNG)
 #### Список тест кейсов
-![This is an image](pic/case.png)
+![This is an image](pic/case.PNG)
 #### Пример отчета о прохождении ui-теста
-![This is an image](pic/example_test_ui_allure.png)
+![This is an image](pic/example_test_ui_allure.PNG)
 #### Пример отчета о прохождении api-теста
-![This is an image](pic/test_api.png)
+![This is an image](pic/test_api.PNG)
 
 
 ## [Видео прохождения автотестов](https://jenkins.autotests.cloud/job/test_litres/38/allure/data/attachments/65715dbcedac12d8.html)
