@@ -54,7 +54,6 @@ def test_search():
     mp.check_search()
 
 
-
 @allure.epic('Authorized')
 @allure.label("owner", "flowerfrog")
 @allure.feature("Checking the authorization of the user")
