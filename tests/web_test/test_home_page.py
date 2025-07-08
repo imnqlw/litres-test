@@ -2,14 +2,14 @@ import allure
 from pages.web.home_page import mp
 
 
-@allure.label('owner')
+
 @allure.severity('high')
 def test_new_book():
     mp.select_new_books()
     mp.check_new_book()
 
 
-@allure.tag('web')
+
 @allure.label('owner')
 @allure.severity('high')
 def test_catalog():
@@ -17,7 +17,7 @@ def test_catalog():
     mp.check_catalog()
 
 
-@allure.tag('web')
+
 @allure.label('owner')
 @allure.severity('high')
 def test_check_book():
@@ -25,7 +25,7 @@ def test_check_book():
     mp.check_found_book()
 
 
-@allure.tag('web')
+
 @allure.label('owner')
 @allure.severity('high')
 def test_search():
@@ -33,7 +33,7 @@ def test_search():
     mp.check_search()
 
 
-@allure.tag('web')
+
 @allure.label('owner')
 @allure.severity('high')
 def test_authorisation(login, passwd):
